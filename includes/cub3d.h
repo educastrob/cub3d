@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2024/12/09 17:55:31 by educastro        ###   ########.fr       */
+/*   Updated: 2024/12/17 20:11:58 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define CUB3D_H
 
 # include <stdio.h>
+# include "../lib/libft/inc/libft.h"
 
 #endif
