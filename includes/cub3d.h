@@ -6,15 +6,15 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/01/29 19:25:05 by educastro        ###   ########.fr       */
+/*   Updated: 2025/01/29 19:28:25 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../lib/MLX42/include/MLX42.h"
-# include "../lib/libft/inc/libft.h"
+# include "MLX42.h"
+# include "libft.h"
 # include <fcntl.h>
 # include <float.h>
 # include <limits.h>
