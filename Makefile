@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: educastro <educastro@student.42.fr>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/10 15:31:16 by mwallage          #+#    #+#              #
-#    Updated: 2024/12/09 17:58:32 by educastro        ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC		:= cc
 CFLAGS	:= -Wall -Ofast
 MLX_DIR		:= ./lib/MLX42
@@ -26,7 +14,7 @@ ifeq ($(UNAME_S),Darwin)
 	-Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
 endif
 SRC_DIR	:= sources
-SRC		:= main.c
+SRC		:= main.c init.c
 SRCS	:= $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ_DIR	:= obj
 OBJ		:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))

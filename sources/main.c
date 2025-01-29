@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2024/12/09 17:55:10 by educastro        ###   ########.fr       */
+/*   Updated: 2025/01/29 19:25:35 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,9 @@ int main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	printf("Hello World!");
+
+	t_cub3d	cub3d;
+
+	start_params(&cub3d);
+	initialize(&cub3d);
 }
