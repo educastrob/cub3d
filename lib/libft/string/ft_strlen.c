@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2025/01/29 19:32:41 by educastro        ###   ########.fr       */
+/*   Created: 2023/04/20 19:02:11 by pdavi-al          #+#    #+#             */
+/*   Updated: 2023/07/20 21:57:15 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+size_t	ft_strlen(const char *str)
 {
-	(void)argc;
-	(void)argv;
+	size_t	i;
 
-	t_cub3d	cub3d;
-
-	start_params(&cub3d);
-	initialize(&cub3d);
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

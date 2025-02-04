@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/01/29 19:28:25 by educastro        ###   ########.fr       */
+/*   Updated: 2025/02/03 21:09:09 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "MLX42.h"
-# include "libft.h"
+# include "../lib/libft/libft.h"
 # include <fcntl.h>
 # include <float.h>
 # include <limits.h>
@@ -96,6 +96,17 @@ typedef struct	s_cub3d
 // init.c
 void				initialize(t_cub3d *cub3d);
 void				start_params(t_cub3d *cub3d);
+
+// finish.c
+void	free_texture(t_cub3d *cub3d);
+void	free_for_finish(t_cub3d *cub3d);
+void	err_exit(char *str);
+void	close_err_exit(int fd, char *str);
+void	close_free_err_exit(int fd, char **arr, char *err_message);
+
+// validation.c
+char	*valid_args(int argc, char **argv);
+
 
 
 #endif

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2025/01/29 19:32:41 by educastro        ###   ########.fr       */
+/*   Created: 2023/05/03 19:53:18 by pdavi-al          #+#    #+#             */
+/*   Updated: 2023/05/03 20:59:29 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	(void)argc;
-	(void)argv;
+	t_list	*tmp;
 
-	t_cub3d	cub3d;
-
-	start_params(&cub3d);
-	initialize(&cub3d);
+	if (del == NULL || lst == NULL || *lst == NULL)
+		return ;
+	while (lst && *lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
 }

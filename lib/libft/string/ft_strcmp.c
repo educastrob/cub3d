@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2025/01/29 19:32:41 by educastro        ###   ########.fr       */
+/*   Created: 2023/04/20 19:06:30 by pdavi-al          #+#    #+#             */
+/*   Updated: 2023/07/27 23:06:04 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	(void)argc;
-	(void)argv;
-
-	t_cub3d	cub3d;
-
-	start_params(&cub3d);
-	initialize(&cub3d);
+	while (*s1 != '\0' || *s2 != '\0')
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

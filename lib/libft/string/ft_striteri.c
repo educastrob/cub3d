@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2025/01/29 19:32:41 by educastro        ###   ########.fr       */
+/*   Created: 2023/05/01 13:31:59 by pdavi-al          #+#    #+#             */
+/*   Updated: 2023/05/03 23:52:15 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	(void)argc;
-	(void)argv;
+	unsigned int	i;
 
-	t_cub3d	cub3d;
-
-	start_params(&cub3d);
-	initialize(&cub3d);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, (s + i));
+		i++;
+	}
 }

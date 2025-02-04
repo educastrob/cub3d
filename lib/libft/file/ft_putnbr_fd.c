@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2025/01/29 19:32:41 by educastro        ###   ########.fr       */
+/*   Created: 2023/05/01 13:31:13 by pdavi-al          #+#    #+#             */
+/*   Updated: 2023/05/29 21:04:23 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	(void)argc;
-	(void)argv;
+	long	nbr;
 
-	t_cub3d	cub3d;
-
-	start_params(&cub3d);
-	initialize(&cub3d);
+	nbr = n;
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (nbr / 10 > 0)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd("0123456789"[nbr % 10], fd);
 }

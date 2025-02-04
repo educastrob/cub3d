@@ -14,7 +14,10 @@ ifeq ($(UNAME_S),Darwin)
 	-Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -pthread -lm
 endif
 SRC_DIR	:= sources
-SRC		:= main.c init.c
+SRC		:= main.c \
+			init.c \
+			validation.c \
+			finish.c
 SRCS	:= $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ_DIR	:= obj
 OBJ		:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
@@ -33,7 +36,7 @@ $(MLX_DIR):
 	git clone https://github.com/codam-coding-college/MLX42.git $@;
 
 $(LIBFT_DIR):
-	git clone https://github.com/MartijnWallage/42_libft.git $@;
+	lib/libft $@;
 
 $(OBJ_DIR):
 	mkdir obj
@@ -46,12 +49,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c includes/cub3d.h
 
 clean:
 	rm -rf $(OBJ)
-	make clean -C$(LIBFT_DIR)
 
 fclean: clean
 	rm $(NAME)
 	rmdir $(OBJ_DIR)
-	rm -rf $(LIBFT_DIR)
 	rm -rf $(MLX_DIR)
 
 re: fclean all
