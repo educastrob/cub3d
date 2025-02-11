@@ -17,6 +17,9 @@ SRC_DIR	:= sources
 SRC		:= main.c \
 			init.c \
 			validation.c \
+			map.c \
+			read_param.c \
+			utils.c \
 			finish.c
 SRCS	:= $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ_DIR	:= obj

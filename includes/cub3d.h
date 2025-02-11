@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/02/03 21:09:09 by educastro        ###   ########.fr       */
+/*   Updated: 2025/02/10 23:35:15 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,8 @@
 # define ERR_MISSING_PARAMS "Error\nMissing parameters\n"
 # define ERR_MAP_NOT_FOUND "Error\nMap not found\n"
 
-typedef enum e_bool
-{
-	FALSE,
-	TRUE
-}	boolean;
+# define FALSE 0
+# define TRUE 1
 
 // structs
 typedef struct	s_vector
@@ -106,7 +103,18 @@ void	close_free_err_exit(int fd, char **arr, char *err_message);
 
 // validation.c
 char	*valid_args(int argc, char **argv);
+char	*valid_charset(char *str, char *set);
 
+// map.c
+void	read_map(t_cub3d *cub3d, char *map_file);
 
+// read_param.c
+size_t	parse_parameters(t_cub3d *cub3d, int fd, char **map_line);
+
+// utils.c
+size_t	get_file_size(char *map_file);
+int		is_empty_line(char *str);
+char	*remove_new_line(char *str);
+void	free_map_and_texture(t_cub3d *cub3d);
 
 #endif
