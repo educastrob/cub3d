@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:57:25 by pdavi-al          #+#    #+#             */
-/*   Updated: 2024/02/26 23:22:13 by paulo            ###   ########.fr       */
+/*   Updated: 2025/02/26 19:51:42 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define FALSE 0
+# define TRUE 1
 
 typedef struct s_list
 {
@@ -34,7 +37,7 @@ void				free_gnl_memory(int fd);
 // Math
 int					ft_atoi(const char *nptr);
 float				ft_atof(char *str);
-int					ft_safe_atoi(const char *nptr, bool *has_err);
+int					ft_safe_atoi(const char *nptr, int *has_err);
 
 // Memory
 void				ft_bzero(void *s, size_t n);

@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/02/10 23:35:15 by educastro        ###   ########.fr       */
+/*   Updated: 2025/02/26 19:49:46 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,10 @@ char	*valid_charset(char *str, char *set);
 
 // map.c
 void	read_map(t_cub3d *cub3d, char *map_file);
+
+// load_param.c
+void	load_texture(t_cub3d *cub3d, mlx_texture_t **texture, int fd, char **words);
+void	load_color(t_cub3d *cub3d, int64_t *color, int fd, char **words);
 
 // read_param.c
 size_t	parse_parameters(t_cub3d *cub3d, int fd, char **map_line);

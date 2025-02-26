@@ -19,6 +19,7 @@ SRC		:= main.c \
 			validation.c \
 			map.c \
 			read_param.c \
+			load_param.c \
 			utils.c \
 			finish.c
 SRCS	:= $(addprefix $(SRC_DIR)/, $(SRC))

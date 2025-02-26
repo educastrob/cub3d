@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulo <paulo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:05:36 by pdavi-al          #+#    #+#             */
-/*   Updated: 2024/02/26 22:40:22 by paulo            ###   ########.fr       */
+/*   Updated: 2025/02/26 19:46:39 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static bool	verify_overflow(int number, int digit, int multiplyer);
+static int	verify_overflow(int number, int digit, int multiplyer);
 
 int	ft_atoi(const char *nptr)
 {
@@ -35,7 +35,7 @@ int	ft_atoi(const char *nptr)
 	return (number);
 }
 
-int	ft_safe_atoi(const char *nptr, bool *has_err)
+int	ft_safe_atoi(const char *nptr, int *has_err)
 {
 	size_t	i;
 	int		number;
@@ -44,12 +44,12 @@ int	ft_safe_atoi(const char *nptr, bool *has_err)
 	i = 0;
 	number = 0;
 	multiplyer = 1;
-	*has_err = false;
+	*has_err = FALSE;
 	while (nptr[i] != '\0' && ft_isspace(nptr[i]))
 		i++;
 	if (nptr[i] == '\0')
 	{
-		*has_err = true;
+		*has_err = TRUE;
 		return (number);
 	}
 	if (nptr[i] == '+' || nptr[i] == '-')
@@ -64,11 +64,11 @@ int	ft_safe_atoi(const char *nptr, bool *has_err)
 	return (number);
 }
 
-static bool	verify_overflow(int number, int digit, int multiplyer)
+static int	verify_overflow(int number, int digit, int multiplyer)
 {
 	if (multiplyer == 1 && number > (INT_MAX - digit) / 10)
-		return (true);
+		return (TRUE);
 	else if (number < (INT_MIN + digit) / 10)
-		return (true);
-	return (false);
+		return (TRUE);
+	return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:11:01 by educastro         #+#    #+#             */
-/*   Updated: 2025/02/10 23:56:08 by educastro        ###   ########.fr       */
+/*   Updated: 2025/02/11 14:56:54 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ static void	check_params_map(t_cub3d *cub3d, int fd, char *str)
 	if (size != 2)
 		invalid_parameter_exit(cub3d, fd, words, ERR_INVALID_PARAMETER);
 	if (!ft_strncmp(words[0], NORTH, 3))
-		load_texture(cub3d, &cub3d->north_texture, fd, words); // needs load functions
+		load_texture(cub3d, &cub3d->north_texture, fd, words);
 	else if (!ft_strncmp(words[0], SOUTH, 3))
-		load_texture(cub3d, &cub3d->south_texture, fd, words);// needs load functions
+		load_texture(cub3d, &cub3d->south_texture, fd, words);
 	else if (!ft_strncmp(words[0], WEST, 3))
-		load_texture(cub3d, &cub3d->west_texture, fd, words);// needs load functions
+		load_texture(cub3d, &cub3d->west_texture, fd, words);
 	else if (!ft_strncmp(words[0], EAST, 3))
-		load_texture(cub3d, &cub3d->east_texture, fd, words);// needs load functions
+		load_texture(cub3d, &cub3d->east_texture, fd, words);
 	else if (!ft_strncmp(words[0], FLOOR, 2))
-		load_color(cub3d, &cub3d->floor_color, fd, words);// needs load functions
+		load_color(cub3d, &cub3d->floor_color, fd, words);
 	else if (!ft_strncmp(words[0], CEILING, 2))
-		load_color(cub3d, &cub3d->ceiling_color, fd, words);// needs load functions
+		load_color(cub3d, &cub3d->ceiling_color, fd, words);
 	else
 		invalid_parameter_exit(cub3d, fd, words, ERR_INVALID_TEXTURE_COLOR);
 }
