@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:31:47 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/24 15:02:47 by educastro        ###   ########.fr       */
+/*   Updated: 2025/03/24 18:10:47 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	valid_map(t_cub3d *cub3d)
 			free_map_and_texture(cub3d);
 		}
 		player_count += valid_player(cub3d->map[y++]);
-		//get_player_position(cub3d, cub3d->map[y - 1], y - 1);
+		get_player_position(cub3d, cub3d->map[y - 1], y - 1);
 	}
 	if (player_count != -1)
 	{
