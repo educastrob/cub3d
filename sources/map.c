@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:06:16 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/20 19:44:26 by edcastro         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:29:30 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static size_t	get_end_empty_lines(t_cub3d *cub3d);
+static void	clean_lines(t_cub3d *cub3d, size_t max_width);
 
 void	read_map(t_cub3d *cub3d, char *map_file)
 {
@@ -37,4 +40,68 @@ void	read_map(t_cub3d *cub3d, char *map_file)
 			break ;
 	}
 	close(fd);
+}
+
+void	normalize_map(t_cub3d *cub3d)
+{
+	size_t	max_width;
+	size_t	empty_lines;
+	char	**new_map;
+
+	max_width = find_max_map_width(cub3d);
+	cub3d->map_x = max_width + 1;
+	clean_lines(cub3d, max_width);
+	empty_lines = get_end_empty_lines(cub3d);
+	if (empty_lines == 0)
+	 return ;
+	cub3d->map_y -= empty_lines;
+	new_map = malloc((cub3d->map_y + 1) * sizeof(char *));
+	if (new_map == NULL)
+		err_exit(ERR_INVALID_MALLOC);
+	new_map[cub3d->map_y] = NULL;
+	ft_memcpy(new_map, cub3d->map, cub3d->map_y * sizeof(char *));
+	while (empty_lines--)
+		free(cub3d->map[cub3d->map_y + empty_lines]);
+	free(cub3d->map);
+	cub3d->map = new_map;
+}
+
+// limpar e alocar linhas
+static void	clean_lines(t_cub3d *cub3d, size_t max_width)
+{
+	size_t	i;
+	size_t	j;
+	char	*new_line;
+
+	i = 0;
+	while (i < cub3d->map_y)
+	{
+		j = 0;
+		while (cub3d->map[i][j] != '\0' && cub3d->map[i][j] != '\n')
+			j++;
+		new_line = malloc((max_width + 1) * sizeof(char));
+		if (new_line == NULL)
+			err_exit(ERR_INVALID_MALLOC);
+		new_line[max_width] = '\0';
+		ft_memset(new_line, ' ', max_width);
+		ft_memcpy(new_line, cub3d->map[i], j);
+		free(cub3d->map[i]);
+		cub3d->map[i] = new_line;
+		i++;
+	}
+}
+
+// retorna o numero de linhas vazias no final do mapa.
+static size_t	get_end_empty_lines(t_cub3d *cub3d)
+{
+	size_t	i;
+
+	i = cub3d->map_y - 1;
+	while (i > 0)
+	{
+		if (!is_empty_line(cub3d->map[i]))
+			return (cub3d->map_y - i - 1);
+		i--;
+	}
+	return (0);
 }

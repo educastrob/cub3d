@@ -4,7 +4,7 @@ MLX_DIR		:= ./lib/MLX42
 MLX		:= $(MLX_DIR)/build/libmlx42.a
 LIBFT_DIR	:= ./lib/libft
 LIBFT 	:= $(LIBFT_DIR)/libft.a
-HEADERS	:= -I ./includes -I $(MLX_DIR)/include/MLX42 -I $(LIBFT_DIR)/inc
+HEADERS	:= -I ./includes -I $(MLX_DIR)/include/MLX42 -I $(LIBFT)
 UNAME_S	:= $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	LIBS	:= -L$(LIBFT_DIR) -lft $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm

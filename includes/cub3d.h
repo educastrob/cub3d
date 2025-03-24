@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/20 18:44:51 by edcastro         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:46:22 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ char	*valid_charset(char *str, char *set);
 
 // map.c
 void	read_map(t_cub3d *cub3d, char *map_file);
+void	normalize_map(t_cub3d *cub3d);
 
 // load_param.c
 void	load_texture(t_cub3d *cub3d, mlx_texture_t **texture, int fd, char **words);
@@ -120,5 +121,6 @@ size_t	get_file_size(char *map_file);
 int		is_empty_line(char *str);
 char	*remove_new_line(char *str);
 void	free_map_and_texture(t_cub3d *cub3d);
+size_t	find_max_map_width(t_cub3d *cub3d);
 
 #endif

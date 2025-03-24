@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2025/02/26 19:57:39 by educastro        ###   ########.fr       */
+/*   Updated: 2025/03/24 12:43:20 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
 	start_params(&cub3d);
 	read_map(&cub3d, valid_args(argc, argv));
-	// normalize_map()
+	normalize_map(&cub3d);
 	// valid_map()
 	initialize(&cub3d);
 	free_for_finish(&cub3d);

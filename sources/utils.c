@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 22:43:03 by educastro         #+#    #+#             */
-/*   Updated: 2025/02/10 23:40:03 by educastro        ###   ########.fr       */
+/*   Updated: 2025/03/24 12:03:52 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,26 @@ size_t	get_file_size(char *map_file)
 	}
 	close(fd);
 	return (lines_size);
+}
+
+size_t	find_max_map_width(t_cub3d *cub3d)
+{
+	size_t	i;
+	size_t	j;
+	size_t	max;
+
+	i = 0;
+	max = 0;
+	while (i < cub3d->map_y)
+	{
+		j = 0;
+		while (cub3d->map[i][j] != '\0' && cub3d->map[i][j] != '\n')
+			j++;
+		if (j > max)
+			max = j;
+		i++;
+	}
+	return (max);
 }
 
 void	free_map_and_texture(t_cub3d *cub3d)

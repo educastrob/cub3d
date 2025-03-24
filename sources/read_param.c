@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:11:01 by educastro         #+#    #+#             */
-/*   Updated: 2025/02/11 14:56:54 by educastro        ###   ########.fr       */
+/*   Updated: 2025/03/24 13:13:00 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t	skip_empty_lines(t_cub3d *cub3d, int fd, char **line);
 static void		invalid_parameter_exit(t_cub3d *cub3d, int fd, char **words,
 					char *str);
 
-// retorna o número total de linhas lidas, incluindo as linhas vazias puladas.
+// termina de processar as configurações e limpa as linhas vazias até o começo da matriz do mapa.
 size_t	parse_parameters(t_cub3d *cub3d, int fd, char **map_line)
 {
 	char	*line;
@@ -46,13 +46,13 @@ size_t	parse_parameters(t_cub3d *cub3d, int fd, char **map_line)
 	return (read_lines + skip_empty_lines(cub3d, fd, map_line));
 }
 
-// retorna numero de linhas vazias encontradas
+// retorna numero de linhas vazias encontradas.
 static size_t	skip_empty_lines(t_cub3d *cub3d, int fd, char **line)
 {
 	size_t	num;
 
 	num = 0;
-	while (true)
+	while (TRUE)
 	{
 		*line = get_next_line(fd);
 		if (*line == NULL)
@@ -68,6 +68,7 @@ static size_t	skip_empty_lines(t_cub3d *cub3d, int fd, char **line)
 	return (num);
 }
 
+// carrega texturas e cores a partir das palavras chaves encontradas (NO, SO, WE, EA, C, F).
 static void	check_params_map(t_cub3d *cub3d, int fd, char *str)
 {
 	char	**words;
