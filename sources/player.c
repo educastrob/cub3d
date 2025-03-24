@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:28:04 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/24 17:33:31 by educastro        ###   ########.fr       */
+/*   Created: 2025/03/24 13:43:47 by educastro         #+#    #+#             */
+/*   Updated: 2025/03/24 13:50:33 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int main(int argc, char **argv)
+int	valid_player(char *line)
 {
-	(void)argc; 
-	(void)argv;
+	int	index;
+	int	num;
 
-	t_cub3d	cub3d;
-
-	start_params(&cub3d);
-	read_map(&cub3d, valid_args(argc, argv));
-	normalize_map(&cub3d);
-	valid_map(&cub3d);
-	initialize(&cub3d);
-	free_for_finish(&cub3d);
-
-	return (EXIT_SUCCESS);
+	num = 0;
+	while (*line != '\0')
+	{
+		index = 0;
+		while (VALID_CHAR_SET_PLAYER[index] != '\0')
+		{
+			if (*line == VALID_CHAR_SET_PLAYER[index])
+			{
+				num++;
+				break ;
+			}
+			index++;
+		}
+		line++;
+	}
+	return (num);
 }

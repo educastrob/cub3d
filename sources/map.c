@@ -6,14 +6,14 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:06:16 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/24 13:29:30 by educastro        ###   ########.fr       */
+/*   Updated: 2025/03/24 16:25:51 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static size_t	get_end_empty_lines(t_cub3d *cub3d);
-static void	clean_lines(t_cub3d *cub3d, size_t max_width);
+static void		clean_lines(t_cub3d *cub3d, size_t max_width);
 
 void	read_map(t_cub3d *cub3d, char *map_file)
 {
@@ -40,6 +40,35 @@ void	read_map(t_cub3d *cub3d, char *map_file)
 			break ;
 	}
 	close(fd);
+}
+
+void	get_player_position(t_cub3d *cub3d, char *line, size_t current_y)
+{
+	char	*ptr;
+
+	ptr = valid_charset(line, NOT_PLAYER_CHAR_SET);
+	if (ptr != NULL)
+	{
+		cub3d->player.x = (double)(ptr - line) + 0.5;
+		cub3d->player.y = (double)(current_y) + 0.5;
+		if (*ptr == 'S')
+		{
+			cub3d->plane.x = -0.66;
+			cub3d->dir.y = 1;
+		}
+		else if (*ptr == 'E' || *ptr == 'W')
+		{
+			cub3d->plane.x = 0;
+			cub3d->plane.y = 0.66;
+			cub3d->dir.x = 1;
+			cub3d->dir.y = 0;
+			if (*ptr == 'W')
+				cub3d->plane.y = -0.66;
+			if (*ptr == 'W')
+				cub3d->dir.x = -1;
+		}
+		*ptr = '0';
+	}
 }
 
 void	normalize_map(t_cub3d *cub3d)

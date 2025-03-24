@@ -6,7 +6,7 @@
 /*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/24 12:46:22 by educastro        ###   ########.fr       */
+/*   Updated: 2025/03/24 16:38:42 by educastro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,12 @@ void	close_free_err_exit(int fd, char **arr, char *err_message);
 // validation.c
 char	*valid_args(int argc, char **argv);
 char	*valid_charset(char *str, char *set);
+void	valid_map(t_cub3d *cub3d);
 
 // map.c
 void	read_map(t_cub3d *cub3d, char *map_file);
 void	normalize_map(t_cub3d *cub3d);
+void	get_player_position(t_cub3d *cub3d, char *line, size_t current_y);
 
 // load_param.c
 void	load_texture(t_cub3d *cub3d, mlx_texture_t **texture, int fd, char **words);
@@ -115,6 +117,9 @@ void	load_color(t_cub3d *cub3d, int64_t *color, int fd, char **words);
 
 // read_param.c
 size_t	parse_parameters(t_cub3d *cub3d, int fd, char **map_line);
+
+// player.c
+int		valid_player(char *line);
 
 // utils.c
 size_t	get_file_size(char *map_file);
