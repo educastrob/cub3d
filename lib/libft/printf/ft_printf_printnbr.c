@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_printnbr.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 13:37:37 by educastro         #+#    #+#             */
+/*   Updated: 2025/03/24 13:37:38 by educastro        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf_utils.h"
 
 int	ft_printf_printnbr(char *str_n, int len, t_element element)
