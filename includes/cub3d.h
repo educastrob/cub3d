@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/24 17:54:32 by educastro        ###   ########.fr       */
+/*   Updated: 2025/04/06 22:41:12 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,21 @@ typedef struct	s_cub3d
 	t_vector		plane;
 }	t_cub3d;
 
+typedef struct s_ray_calc
+{
+	int				x;
+	int				side;
+	double			camera_x;
+	double			perp_wall_dist;
+	t_vector		ray;
+	t_vector		delta_dist;
+	t_vector		side_dist;
+	t_vector		step;
+	t_vector		map;
+	t_vector		map_point;
+	t_vector		dir_point;
+}					t_ray_calc;
+
 // init.c
 void				initialize(t_cub3d *cub3d);
 void				start_params(t_cub3d *cub3d);
@@ -127,5 +142,8 @@ int		is_empty_line(char *str);
 char	*remove_new_line(char *str);
 void	free_map_and_texture(t_cub3d *cub3d);
 size_t	find_max_map_width(t_cub3d *cub3d);
+
+// draw
+void	draw_background(t_cub3d *cub3d);
 
 #endif
