@@ -4,3 +4,4 @@ obj/
 cub3d
 *.o
 */build/*
+lib/MLX42/
