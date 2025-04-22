@@ -6,7 +6,7 @@
 /*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:08:53 by educastro         #+#    #+#             */
-/*   Updated: 2025/04/06 22:37:35 by rilopes          ###   ########.fr       */
+/*   Updated: 2025/04/22 03:08:27 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	initialize(t_cub3d	*cub3d)
 
 void	start_params(t_cub3d *cub3d)
 {
-	cub3d->dir.x = 0;
-	cub3d->dir.y = -1;
-	cub3d->plane.x = 0.66;
-	cub3d->plane.y = 0;
+	cub3d->dir_player.x = 0;
+	cub3d->dir_player.y = -1;
+	cub3d->fov.x = 0.66;
+	cub3d->fov.y = 0;
 	cub3d->west_texture = NULL;
 	cub3d->north_texture = NULL;
 	cub3d->east_texture = NULL;

@@ -6,7 +6,7 @@
 /*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:31:47 by educastro         #+#    #+#             */
-/*   Updated: 2025/04/06 22:25:32 by rilopes          ###   ########.fr       */
+/*   Updated: 2025/04/22 03:09:51 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	valid_open_wall(t_cub3d *cub3d, size_t x, size_t y);
 
-// valida as paredes superiores e inferiores do mapa, em seguida valida a parte interna do mapa.
+// valida as paredes superiores e inferiores do mapa,
+// em seguida valida a parte interna do mapa.
 void	valid_walls(t_cub3d *cub3d)
 {
 	size_t	x;

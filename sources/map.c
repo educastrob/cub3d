@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:06:16 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/24 18:10:44 by educastro        ###   ########.fr       */
+/*   Updated: 2025/04/22 03:14:31 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	read_map(t_cub3d *cub3d, char *map_file)
 
 	lines_size = get_file_size(map_file);
 	if (lines_size == 0)
-		return err_exit(ERR_INVALID_EMPTY_FILE);
+		return (err_exit(ERR_INVALID_EMPTY_FILE));
 	fd = open(map_file, O_RDONLY);
 	lines_size -= parse_parameters(cub3d, fd, &line);
 	cub3d->map = malloc((lines_size + 1) * sizeof(char *));
@@ -53,19 +53,19 @@ void	get_player_position(t_cub3d *cub3d, char *line, size_t current_y)
 		cub3d->player.y = (double)(current_y) + 0.5;
 		if (*ptr == 'S')
 		{
-			cub3d->plane.x = -0.66;
-			cub3d->dir.y = 1;
+			cub3d->fov.x = -0.66;
+			cub3d->dir_player.y = 1;
 		}
 		else if (*ptr == 'E' || *ptr == 'W')
 		{
-			cub3d->plane.x = 0;
-			cub3d->plane.y = 0.66;
-			cub3d->dir.x = 1;
-			cub3d->dir.y = 0;
+			cub3d->fov.x = 0;
+			cub3d->fov.y = 0.66;
+			cub3d->dir_player.x = 1;
+			cub3d->dir_player.y = 0;
 			if (*ptr == 'W')
-				cub3d->plane.y = -0.66;
+				cub3d->fov.y = -0.66;
 			if (*ptr == 'W')
-				cub3d->dir.x = -1;
+				cub3d->dir_player.x = -1;
 		}
 		*ptr = '0';
 	}
@@ -82,7 +82,7 @@ void	normalize_map(t_cub3d *cub3d)
 	clean_lines(cub3d, max_width);
 	empty_lines = get_end_empty_lines(cub3d);
 	if (empty_lines == 0)
-	 return ;
+		return ;
 	cub3d->map_y -= empty_lines;
 	new_map = malloc((cub3d->map_y + 1) * sizeof(char *));
 	if (new_map == NULL)

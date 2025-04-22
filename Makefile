@@ -22,8 +22,9 @@ SRC		:= main.c \
 			load_param.c \
 			player.c \
 			utils.c \
-			draw_background.c \
+			draws.c \
 			ray_casting.c \
+			utils_ray.c \
 			finish.c
 SRCS	:= $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ_DIR	:= obj

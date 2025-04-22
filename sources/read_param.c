@@ -6,7 +6,7 @@
 /*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 23:11:01 by educastro         #+#    #+#             */
-/*   Updated: 2025/04/06 22:35:58 by rilopes          ###   ########.fr       */
+/*   Updated: 2025/04/22 03:13:21 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static size_t	skip_empty_lines(t_cub3d *cub3d, int fd, char **line);
 static void		invalid_parameter_exit(t_cub3d *cub3d, int fd, char **words,
 					char *str);
 
-// termina de processar as configurações e limpa as linhas vazias até o começo da matriz do mapa.
+// termina de processar as configurações e limpa as
+// linhas vazias até o começo da matriz do mapa.
 size_t	parse_parameters(t_cub3d *cub3d, int fd, char **map_line)
 {
 	char	*line;
@@ -68,7 +69,8 @@ static size_t	skip_empty_lines(t_cub3d *cub3d, int fd, char **line)
 	return (num);
 }
 
-// carrega texturas e cores a partir das palavras chaves encontradas (NO, SO, WE, EA, C, F).
+// carrega texturas e cores a partir das palavras
+// chaves encontradas (NO, SO, WE, EA, C, F).
 static void	check_params_map(t_cub3d *cub3d, int fd, char *str)
 {
 	char	**words;

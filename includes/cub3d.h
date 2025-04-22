@@ -6,7 +6,7 @@
 /*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:28:31 by educastro         #+#    #+#             */
-/*   Updated: 2025/04/06 22:41:12 by rilopes          ###   ########.fr       */
+/*   Updated: 2025/04/22 03:52:24 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WIDTH 1280
 # define HEIGHT 720
 # define PLAYER_SPEED 0.1
-# define PLAYER_ROTATE_SPEED 0.06666666666666666
+# define PLAYER_ROTATE_SPEED 0.06
 # define WALL_OFFSET 0.3
 
 # define GAME_NAME "CUB3D - by: edcastro e rilopes"
@@ -65,7 +65,6 @@
 # define FALSE 0
 # define TRUE 1
 
-// structs
 typedef struct	s_vector
 {
 	double		x;
@@ -86,15 +85,14 @@ typedef struct	s_cub3d
 	int64_t			floor_color;
 	int64_t			ceiling_color;
 	t_vector		player;
-	t_vector		dir;
-	t_vector		plane;
+	t_vector		dir_player;
+	t_vector		fov;
 }	t_cub3d;
 
 typedef struct s_ray_calc
 {
 	int				x;
 	int				side;
-	double			camera_x;
 	double			perp_wall_dist;
 	t_vector		ray;
 	t_vector		delta_dist;
@@ -104,6 +102,19 @@ typedef struct s_ray_calc
 	t_vector		map_point;
 	t_vector		dir_point;
 }					t_ray_calc;
+
+typedef struct s_draw_wall
+{
+	int				tex_x;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	int				tex_y;
+	int				color;
+	double			wall_x;
+	double			step;
+	double			tex_pos;
+}					t_draw_wall;
 
 // init.c
 void				initialize(t_cub3d *cub3d);
@@ -135,6 +146,8 @@ size_t	parse_parameters(t_cub3d *cub3d, int fd, char **map_line);
 
 // player.c
 int		valid_player(char *line);
+void	rotate_player(t_cub3d *cub3d, double angle);
+void	move_player(t_cub3d *cub3d, double speed, int signal);
 
 // utils.c
 size_t	get_file_size(char *map_file);
@@ -143,7 +156,16 @@ char	*remove_new_line(char *str);
 void	free_map_and_texture(t_cub3d *cub3d);
 size_t	find_max_map_width(t_cub3d *cub3d);
 
-// draw
+// draws.c
 void	draw_background(t_cub3d *cub3d);
+void	draw_ray(t_cub3d *cub3d, t_ray_calc *ray_calc);
+
+// ray_casting.c
+void	ray_casting(t_cub3d *cub3d);
+
+// utils_ray.c
+int			define_step(double num);
+double		safe_double_div_zero(double ray);
+uint32_t	rgb_to_int(uint8_t *rgb);
 
 #endif
