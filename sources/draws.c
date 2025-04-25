@@ -6,7 +6,7 @@
 /*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 22:39:16 by rilopes           #+#    #+#             */
-/*   Updated: 2025/04/22 03:52:15 by rilopes          ###   ########.fr       */
+/*   Updated: 2025/04/24 22:23:03 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void	draw_tex_wall(t_cub3d *cub, t_ray_calc *ray_calc,
 	while (y < draw_wall->draw_end)
 	{
 		draw_wall->tex_y = (int) draw_wall->tex_pos;
-		if (draw_wall->tex_y > (int) texture->height - 1)
-			draw_wall->tex_y = texture->height - 1;
 		draw_wall->tex_pos += draw_wall->step;
 		draw_wall->color = rgb_to_int(&texture->pixels[(texture->height
 					* draw_wall->tex_y + draw_wall->tex_x)
@@ -32,7 +30,7 @@ static void	draw_tex_wall(t_cub3d *cub, t_ray_calc *ray_calc,
 	}
 }
 
-void	draw_center_vertical_line(t_cub3d *cub, t_ray_calc *ray_calc,
+static void	draw_center_vertical_line(t_cub3d *cub, t_ray_calc *ray_calc,
 	mlx_texture_t *texture)
 {
 	t_draw_wall	draw_wall;
