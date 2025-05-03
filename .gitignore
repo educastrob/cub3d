@@ -1,2 +1,7 @@
 .vscode
 .codegpt
+obj/
+cub3d
+*.o
+*/build/*
+lib/MLX42/

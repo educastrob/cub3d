@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educastro <educastro@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rilopes <rilopes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:31:47 by educastro         #+#    #+#             */
-/*   Updated: 2025/03/24 18:10:47 by educastro        ###   ########.fr       */
+/*   Updated: 2025/04/22 03:09:51 by rilopes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	valid_open_wall(t_cub3d *cub3d, size_t x, size_t y);
 
-// valida as paredes superiores e inferiores do mapa, em seguida valida a parte interna do mapa.
+// valida as paredes superiores e inferiores do mapa,
+// em seguida valida a parte interna do mapa.
 void	valid_walls(t_cub3d *cub3d)
 {
 	size_t	x;
@@ -71,7 +72,7 @@ void	valid_map(t_cub3d *cub3d)
 	while (y < cub3d->map_y)
 	{
 		invalid_char = valid_charset(cub3d->map[y], VALID_CHAR_SET);
-		if (invalid_char == NULL)
+		if (invalid_char != NULL)
 		{
 			ft_fprintf(STDERR_FILENO, ERR_INVALID_CHAR, *invalid_char);
 			free_map_and_texture(cub3d);
@@ -79,7 +80,7 @@ void	valid_map(t_cub3d *cub3d)
 		player_count += valid_player(cub3d->map[y++]);
 		get_player_position(cub3d, cub3d->map[y - 1], y - 1);
 	}
-	if (player_count != -1)
+	if (player_count != 1)
 	{
 		ft_fprintf(STDERR_FILENO, ERR_INVALID_PLAYER, player_count);
 		free_map_and_texture(cub3d);
