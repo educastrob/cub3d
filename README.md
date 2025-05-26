@@ -1,5 +1,6 @@
 ## 💡 About the project
 
+This project is inspired by the world-famous 90’s game Wolfeinstein 3D, which was the first FPS ever. It will enable to explore ray-casting. My goal will be to make a dynamic view inside a maze, in which you’ll have to find your way.
 
 ## 🛠️ Compile
 
